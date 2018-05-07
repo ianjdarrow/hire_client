@@ -1,0 +1,110 @@
+@import "./colors.scss";
+@import "./layout.scss";
+
+$type-scale-large: (
+  h1: 3.911rem,
+  h2: 2.941rem,
+  h3: 2.211rem,
+  h4: 1.663rem,
+  p: 1.25rem,
+  span: 1.25rem
+);
+
+$type-scale-medium: (
+  h1: 3.052rem,
+  h2: 2.441rem,
+  h3: 1.953em,
+  h4: 1.563rem,
+  p: 1.25rem,
+  span: 1.25rem
+);
+
+$type-scale-small: (
+  h1: 2.686rem,
+  h2: 2.148rem,
+  h3: 1.719rem,
+  h4: 1.375rem,
+  p: 1.1rem,
+  span: 1.1rem
+);
+
+$breakpoint-medium: 75em;
+$breakpoint-small: 45em;
+
+@mixin size($level) {
+  font-size: map-get($type-scale-large, $level);
+  @media (max-width: $breakpoint-medium) {
+    font-size: map-get($type-scale-medium, $level);
+  }
+  @media (max-width: $breakpoint-small) {
+    font-size: map-get($type-scale-small, $level);
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, “Roboto”, “Droid Sans”,
+    “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  @include size(p);
+  line-height: 1.4;
+}
+.title {
+  @include size(h1);
+}
+.subtitle {
+  @include size(h2);
+}
+.heading {
+  @include size(h3);
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-top: 0.5em;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 1.4;
+}
+.has-text-small {
+  font-size: 0.75em;
+}
+.has-text-grey {
+  color: $text-grey !important;
+}
+.has-text-success {
+  color: $success !important;
+}
+.has-text-danger {
+  color: $danger !important;
+}
+.has-text-centered {
+  text-align: center !important;
+}
+
+a.link {
+  cursor: pointer;
+  color: $link;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 0.25em;
+  border-radius: 0.25em;
+  &:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.semibold {
+  font-weight: 500;
+}
+.bold {
+  font-weight: 500;
+  border-bottom: 0.1em solid $danger;
+  border-radius: 0;
+}

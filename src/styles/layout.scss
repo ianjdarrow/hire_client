@@ -1,0 +1,52 @@
+@import "./colors.scss";
+
+body {
+  box-sizing: border-box;
+  min-height: 100%;
+}
+html {
+  background: $background;
+  color: $text;
+  min-height: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+.container {
+  box-sizing: border-box;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+  @media (max-width: 600px) {
+    padding: 0.5rem;
+    margin-top: 3.5rem;
+  }
+}
+.card {
+  background: $raise-color;
+  border-radius: 2px;
+  box-sizing: border-box;
+  overflow: hidden;
+  .card-title {
+    padding: 1rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    box-sizing: border-box;
+    font-weight: 500;
+    background: $raise-color;
+  }
+  .card-content {
+    padding: 2.5rem;
+    box-sizing: border-box;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  button {
+    margin: 0;
+  }
+}
