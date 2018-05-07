@@ -33,10 +33,14 @@
         </div>
         <div class='card-content'>
           <form @submit.prevent='handleUserSubmit'>
-            <label>Full name</label>
-            <input placeholder='Jack Donaghy' v-model='form.name'>
-            <label>Title</label>
-            <input placeholder='Chief Executive Officer' v-model='form.title'>
+            <div class='input-container'>
+              <label>Full name</label>
+              <input placeholder='Jack Donaghy' v-model='form.name'>
+            </div>
+            <div class='input-container'>
+              <label>Title</label>
+              <input placeholder='Chief Executive Officer' v-model='form.title'>
+            </div>
             <button type='submit' class='outlined standalone fullwidth grey' :disabled='userSubmitDisabled'>
               Next: Your company&nbsp;
               <i class="fa fa-caret-right" aria-hidden="true"></i>
@@ -49,12 +53,10 @@
 
       <div v-if='step === "company_info"' key='company_info' class='card setup-step'>
         <div class='card-title'>
-          <p>
-            <span class='link has-text-small has-text-grey' @click.prevent='handleIntroSubmit'>
-              <i class="fa fa-caret-left" aria-hidden="true"></i>
-              &nbsp;Previous: You
-            </span>
-          </p>
+          <span class='link has-text-small has-text-grey' @click.prevent='handleIntroSubmit'>
+            <i class="fa fa-caret-left" aria-hidden="true"></i>
+            &nbsp;Previous: You
+          </span>
           <h3 class='heading'>
             <i class="fa fa-building" aria-hidden="true"></i>
             &nbsp;Your company
@@ -63,26 +65,32 @@
         <div class='card-content'>
           <form @submit.prevent='handleCompanySubmit'>
             <!-- Company name -->
-            <label>Legal name</label>
-            <input placeholder='Acme Widgets Inc.' v-model='form.companyName'>
+            <div class='input-container'>
+              <label>Legal name</label>
+              <input placeholder='Acme Widgets Inc.' v-model='form.companyName'>
+            </div>
             <!-- State of formation -->
-            <label>State of Formation</label>
-            <div class='select'>
-              <select v-model='form.state'>
-                <option v-for='state in states' :key='state.name' :value='state.name'>
-                  {{ state.name}}
-                </option>
-              </select>
+            <div class='input-container'>
+              <label>State of Formation</label>
+              <div class='select'>
+                <select v-model='form.state'>
+                  <option v-for='state in states' :key='state.name' :value='state.name'>
+                    {{ state.name}}
+                  </option>
+                </select>
+              </div>
             </div>
             <!-- Entity type -->
-            <label>Entity type</label>
-            <div class='select'>
-              <select v-model='form.entityType'>
-                <option value='Corporation'>Corporation</option>
-                <option value='Limited liability company'>Limited liability company</option>
-                <option value='Limited partnership'>Limited partnership</option>
-                <option value='General partnership'>General partnership</option>
-              </select>
+            <div class='input-container'>
+              <label>Entity type</label>
+              <div class='select'>
+                <select v-model='form.entityType'>
+                  <option value='Corporation'>Corporation</option>
+                  <option value='Limited liability company'>Limited liability company</option>
+                  <option value='Limited partnership'>Limited partnership</option>
+                  <option value='General partnership'>General partnership</option>
+                </select>
+              </div>
             </div>
             <!-- Equity -->
             <div class='equity-questions'>
@@ -94,12 +102,12 @@
               </button>
             </div>
             <transition name='stock-plan'>
-              <div v-if='form.hasStockPlan ==="yes"'>
+              <div v-if='form.hasStockPlan ==="yes"' class='input-container'>
                 <label>Equity plan name</label>
                 <input placeholder='2018 Equity Incentive Plan' v-model='form.stockPlanName'>
               </div>
             </transition>
-            <button :disabled='companySubmitDisabled' type='submit' class='hero standalone fullwidth'>
+            <button :disabled='companySubmitDisabled' type='submit' class='hero fullwidth'>
               Finish setup&nbsp;
               <i class="fa fa-caret-right" aria-hidden="true"></i>
             </button>
@@ -263,7 +271,7 @@ $setup-container-width: 640px;
 .stock-plan-enter-active,
 .stock-plan-leave-active {
   transition: all 0.22s ease-in-out;
-  height: 5em;
+  height: 4em;
 }
 .stock-plan-enter,
 .stock-plan-leave-to {

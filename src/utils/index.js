@@ -111,3 +111,16 @@ export const states = new Array(
   { name: "Wisconsin", abbrev: "WI" },
   { name: "Wyoming", abbrev: "WY" }
 );
+
+export const getPrefillDate = daysFromNow => {
+  let now = new Date();
+  now.setDate(now.getDate() + daysFromNow);
+  return [
+    now.getFullYear(),
+    (now.getMonth() + 1).toString().padStart(2, "0"),
+    now
+      .getDate()
+      .toString()
+      .padStart(2, "0")
+  ].join("-");
+};

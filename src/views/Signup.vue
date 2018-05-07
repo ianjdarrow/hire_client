@@ -6,10 +6,10 @@
         <div class='input-container'>
           <i class="fa fa-envelope left" aria-hidden="true"></i>
           <i class="fa fa-check has-text-success right" aria-hidden="true" v-if='email.touched && email.valid'> </i>
-          <input class='icon-left icon-right' type='email' placeholder='Email' v-model='email.value' autocorrect="off" autocapitalize="off" spellcheck="false" />
+          <input class='icon-left icon-right nolabel' type='email' placeholder='Email' v-model='email.value' autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div class='input-container'>
-          <input class='icon-left icon-right' type='password' placeholder='Password' v-model='password.value' autocorrect="off" autocapitalize="off" spellcheck="false" />
+          <input class='icon-left icon-right nolabel' type='password' placeholder='Password' v-model='password.value' autocorrect="off" autocapitalize="off" spellcheck="false" />
           <i class="fa fa-lock left" aria-hidden="true"></i>
           <i class="fa fa-check has-text-success right" aria-hidden="true" v-if='password.touched && password.valid'> </i>
         </div>

@@ -41,7 +41,7 @@
           <h1 class='subtitle'>
             <i class="far fa-credit-card"></i>
           </h1>
-          <span class='semibold'>Subscription</span>
+          <span class='semibold'>Billing & Plan</span>
         </div>
       </div>
       <div class='card action-card secondary'>
@@ -52,14 +52,6 @@
           <span class='semibold'>Personal info</span>
         </div>
       </div>
-      <!-- <div class='card action-card secondary'>
-        <div class='card-content'>
-          <h1 class='subtitle'>
-            <i class="fas fa-building"></i>
-          </h1>
-          <span class='semibold'>Company</span>
-        </div>
-      </div> -->
       <div class='card action-card secondary'>
         <div class='card-content'>
           <h1 class='subtitle'>
