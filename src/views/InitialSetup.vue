@@ -49,10 +49,12 @@
 
       <div v-if='step === "company_info"' key='company_info' class='card setup-step'>
         <div class='card-title'>
-          <a class='link has-text-small has-text-grey' @click.prevent='handleIntroSubmit'>
-            <i class="fa fa-caret-left" aria-hidden="true"></i>
-            &nbsp;Previous: You
-          </a>
+          <p>
+            <span class='link has-text-small has-text-grey' @click.prevent='handleIntroSubmit'>
+              <i class="fa fa-caret-left" aria-hidden="true"></i>
+              &nbsp;Previous: You
+            </span>
+          </p>
           <h3 class='heading'>
             <i class="fa fa-building" aria-hidden="true"></i>
             &nbsp;Your company
@@ -260,7 +262,7 @@ $setup-container-width: 640px;
 }
 .stock-plan-enter-active,
 .stock-plan-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.22s ease-in-out;
   height: 5em;
 }
 .stock-plan-enter,

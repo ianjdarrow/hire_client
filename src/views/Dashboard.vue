@@ -1,7 +1,7 @@
 <template>
   <div class='container'>
     <div class='action-container'>
-      <div class='card action-card'>
+      <div class='card action-card' @click='$router.push("/dashboard/create/offer-letter")'>
         <div class='card-content'>
           <h1 class='title'>
             <i class="fa fa-file-alt"></i>
@@ -33,23 +33,7 @@
           <h1 class='subtitle'>
             <i class="fas fa-building"></i>
           </h1>
-          <span class='semibold'>Company</span><br>
-        </div>
-      </div>
-      <div class='card action-card secondary'>
-        <div class='card-content'>
-          <h1 class='subtitle'>
-            <i class="fas fa-user-circle"></i>
-          </h1>
-          <span class='semibold'>User</span><br>
-        </div>
-      </div>
-      <div class='card action-card secondary'>
-        <div class='card-content'>
-          <h1 class='subtitle'>
-            <i class="fas fa-building"></i>
-          </h1>
-          <span class='semibold'>Company</span><br>
+          <span class='semibold'>Company info</span>
         </div>
       </div>
       <div class='card action-card secondary'>
@@ -57,15 +41,31 @@
           <h1 class='subtitle'>
             <i class="far fa-credit-card"></i>
           </h1>
-          <span class='semibold'>Subscription</span><br>
+          <span class='semibold'>Subscription</span>
         </div>
       </div>
       <div class='card action-card secondary'>
         <div class='card-content'>
           <h1 class='subtitle'>
+            <i class="fas fa-user-circle"></i>
+          </h1>
+          <span class='semibold'>Personal info</span>
+        </div>
+      </div>
+      <!-- <div class='card action-card secondary'>
+        <div class='card-content'>
+          <h1 class='subtitle'>
+            <i class="fas fa-building"></i>
+          </h1>
+          <span class='semibold'>Company</span>
+        </div>
+      </div> -->
+      <div class='card action-card secondary'>
+        <div class='card-content'>
+          <h1 class='subtitle'>
             <i class="far fa-file"></i>
           </h1>
-          <span class='semibold'>Templates</span><br>
+          <span class='semibold'>Templates</span>
         </div>
       </div>
     </div>
@@ -102,9 +102,8 @@ export default {
   flex-basis: 31.2%;
   margin-bottom: 2rem;
   transition: all 0.15s ease-out;
-  position: relative;
   &:hover {
-    background: rgba(255, 255, 255, 0.13);
+    background: rgba(255, 255, 255, 0.18);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13);
     // transform: translateY(-2px);
     transform: scale(1.05);
@@ -115,7 +114,11 @@ export default {
     margin-bottom: 0.5rem;
   }
   &.secondary {
-    flex-basis: 17.5%;
+    flex-basis: 22.5%;
+    .card-content {
+      padding-left: 0;
+      padding-right: 0;
+    }
     @media (max-width: 600px) {
       flex-basis: 48.5%;
     }

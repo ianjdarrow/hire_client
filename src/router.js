@@ -7,6 +7,7 @@ import Signup from "./views/Signup.vue";
 import ConfirmSignup from "./views/ConfirmSignup.vue";
 import ValidateSignup from "./views/ValidateSignup.vue";
 import InitialSetup from "./views/InitialSetup.vue";
+import CreateOfferLetter from "./views/CreateOfferLetter.vue";
 import Dashboard from "./views/Dashboard.vue";
 
 import store from "./store";
@@ -45,6 +46,14 @@ const router = new Router({
       component: InitialSetup
     },
     {
+      path: "/dashboard/create/offer-letter",
+      name: "create-offer-letter",
+      component: CreateOfferLetter,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: "/dashboard",
       name: "dashboard",
       component: Dashboard,
@@ -61,7 +70,8 @@ router.beforeEach(async (to, from, next) => {
   // this is *separate* from server-side auth, of course
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.state.user.token || window.localStorage.token) {
-      return next();
+      const token = await sendGetRequest("check-token");
+      if (token.status === 200) return next();
     }
     return next({
       path: "/login",

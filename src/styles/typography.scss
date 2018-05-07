@@ -50,6 +50,7 @@ body {
 p {
   @include size(p);
   line-height: 1.4;
+  font-weight: 400;
 }
 .title {
   @include size(h1);
@@ -59,6 +60,9 @@ p {
 }
 .heading {
   @include size(h3);
+}
+.subheading {
+  @include size(h4);
 }
 h1,
 h2,
@@ -86,7 +90,15 @@ h5 {
   text-align: center !important;
 }
 
-a.link {
+a {
+  text-decoration: none;
+  color: lighten($primary, 22%);
+  font-weight: 500;
+  &:hover {
+    color: lighten($primary, 30%);
+  }
+}
+.link {
   cursor: pointer;
   color: $link;
   text-decoration: none;
@@ -96,7 +108,7 @@ a.link {
   border-radius: 0.25em;
   &:hover {
     color: white;
-    background: rgba(255, 255, 255, 0.1);
+    background: $raise-color;
   }
 }
 
@@ -104,7 +116,14 @@ a.link {
   font-weight: 500;
 }
 .bold {
+  color: white !important;
   font-weight: 500;
   border-bottom: 0.1em solid $danger;
   border-radius: 0;
+  &.success {
+    border-bottom: 0.1em solid $success;
+  }
+  &.primary {
+    border-bottom: 0.1em solid $primary;
+  }
 }
