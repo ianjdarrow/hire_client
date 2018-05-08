@@ -67,13 +67,12 @@
 import { mapState } from "vuex";
 export default {
   name: "dashboard",
-  mounted() {
-    setTimeout(() => {
-      if (!this.user.companyId) {
-        console.log(this.user);
-        this.$router.push("/dashboard/setup");
-      }
-    }, 500);
+  async mounted() {
+    await new Promise(res => setTimeout(res, 100));
+    if (!this.user.companyId) {
+      console.log(this.user);
+      this.$router.push("/dashboard/setup");
+    }
   },
   computed: {
     ...mapState({

@@ -94,10 +94,10 @@
             </div>
             <!-- Equity -->
             <div class='equity-questions'>
-              <button type='button' :class='[form.hasStockPlan === "yes" ? "success" : "", "small equity-button outlined"]' @click.prevent='form.hasStockPlan="yes"'>
+              <button type='button' :class='[form.hasStockPlan === "yes" ? "success" : "", "equity-button outlined"]' @click.prevent='form.hasStockPlan="yes"'>
                 We issue equity to employees
               </button>
-              <button type='button' :class='[form.hasStockPlan === "no" ? "danger" : "", "small equity-button outlined"]' @click.prevent='form.hasStockPlan="no"'>
+              <button type='button' :class='[form.hasStockPlan === "no" ? "danger" : "", "equity-button outlined"]' @click.prevent='form.hasStockPlan="no"'>
                 We don't
               </button>
             </div>
@@ -270,8 +270,8 @@ $setup-container-width: 640px;
 }
 .stock-plan-enter-active,
 .stock-plan-leave-active {
-  transition: all 0.22s ease-in-out;
-  height: 4em;
+  transition: all 0.15s ease-in-out;
+  height: 3.5em;
 }
 .stock-plan-enter,
 .stock-plan-leave-to {

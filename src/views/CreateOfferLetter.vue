@@ -13,8 +13,8 @@
           &nbsp;Employee offer letter
         </span>
         <p>
-          Generate and send beautiful hiring packages with
-          <router-link to='/dashboard/templates/offer-letter'>industry-leading documents</router-link> in minutes.
+          Create and send beautiful hiring packages with
+          <router-link to='/dashboard/templates/offer-letter'>industry-best documents</router-link> in minutes.
         </p>
         <button class='primary margin-bottom margin-right'>Start from a previous offer&nbsp;
           <i class="fas fa-caret-right"></i>
@@ -30,36 +30,36 @@
           <div class='two-inputs'>
             <div class='input-container'>
               <label>First name</label>
-              <input type='text' placeholder='Peter'>
+              <input type='text' placeholder='Peter' v-model='form.firstName'>
             </div>
             <div class='input-container'>
               <label>Last name</label>
-              <input placeholder='Gibbons'>
+              <input placeholder='Gibbons' v-model='form.lastName'>
             </div>
           </div>
           <div class='input-container'>
             <label>Email</label>
-            <input type='email' placeholder='peter@example.com'>
+            <input type='email' placeholder='peter@example.com' v-model='form.email'>
           </div>
           <!-- Position stuff -->
           <span class='subheading'>Position</span><br><br>
           <div class='input-container'>
             <label>Title</label>
-            <input type='text' placeholder='Senior Software Engineer'>
+            <input type='text' placeholder='Senior Software Engineer' v-model='form.jobTitle'>
           </div>
           <div class='two-inputs'>
             <div class='input-container'>
               <label>Pay</label>
-              <input type='number' class='icon-left' lang='en-150' placeholder='100,000'>
+              <input type='number' class='icon-left' lang='en-150' placeholder='100,000' v-model='form.payRate'>
               <!-- <i class="fas fa-dollar-sign static-icon"></i> -->
               <span class="static-icon">$</span>
             </div>
             <div class='input-container'>
               <label>per</label>
               <div class='select'>
-                <select>
-                  <option>Year</option>
-                  <option>Hour</option>
+                <select v-model='form.payUnit'>
+                  <option value='year'>Year</option>
+                  <option value='hour'>Hour</option>
                 </select>
               </div>
             </div>
@@ -102,9 +102,9 @@
                 <div class='input-container'>
                   <label>Grant type</label>
                   <div class='select'>
-                    <select>
-                      <option>Options</option>
-                      <option>Restricted stock</option>
+                    <select v-model='form.equityType'>
+                      <option value='option'>Options</option>
+                      <option value='restricted stock'>Restricted stock</option>
                     </select>
                   </div>
                 </div>
@@ -112,7 +112,7 @@
               <div class='input-container'>
                 <label>Vesting schedule</label>
                 <div class='select'>
-                  <select>
+                  <select v-model='form.vesting'>
                     <option value='standard'>Standard (4 years, 1 year cliff)</option>
                     <option value='4/none/monthly'>4 years, no cliff</option>
                     <option value='2/1/monthly'>2 years, 1 year cliff</option>
@@ -127,15 +127,15 @@
           <h3 class='subheading'>Supervisor info</h3><br>
           <div class='input-container'>
             <label>Full name</label>
-            <input type='text' placeholder='Bill Lumbergh'>
+            <input type='text' placeholder='Bill Lumbergh' v-model='form.supervisorName'>
           </div>
           <div class='input-container'>
             <label>Title</label>
-            <input type='text' placeholder='Chief Technology Officer'>
+            <input type='text' placeholder='Chief Technology Officer' v-model='form.supervisorTitle'>
           </div>
           <div class='input-container'>
             <label>Email</label>
-            <input type='email' placeholder='bill@your-company.com'>
+            <input type='email' placeholder='bill@your-company.com' v-model='form.supervisorEmail'>
           </div>
           <!-- Logistics -->
           <hr>
@@ -150,7 +150,7 @@
             </div>
           </div>
           <hr>
-          <button class='hero fullwidth'>Preview offer letter</button>
+          <button type='submit' class='hero fullwidth'>Preview offer letter</button>
         </form>
       </div>
     </div>
@@ -158,7 +158,7 @@
 </template>
 
 <script>
-import { getPrefillDate } from "../utils";
+import { getPrefillDate, sendGetRequest, sendPostRequest } from "../utils";
 export default {
   name: "create-offer-letter",
   data() {
@@ -187,6 +187,8 @@ export default {
   methods: {
     handleFormSubmit: async function() {
       console.log("submitted yo");
+      const create = await sendPostRequest("create-offer-letter", this.form);
+      console.log(create);
     }
   },
   mounted() {
@@ -233,7 +235,7 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -75%);
+  transform: translate(-50%, -67%);
   color: $grey;
   border: 0;
   cursor: default;
