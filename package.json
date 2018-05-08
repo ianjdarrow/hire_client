@@ -6,11 +6,11 @@
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "test": "vue-cli-service test",
-    "deploy":
-      "npm run build && scp -r dist/. root@test.quicksend.io:/var/www/html/"
+    "deploy": "npm run build && scp -r dist/. root@test.quicksend.io:/var/www/html/"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "lodash.throttle": "^4.1.1",
     "normalize.css": "^8.0.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
@@ -26,5 +26,9 @@
     "sass-loader": "^6.0.6",
     "vue-template-compiler": "^2.5.13"
   },
-  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }

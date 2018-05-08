@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <Navbar />
+    <Flash />
+    <Toast />
     <router-view/>
     <Footer />
   </div>
@@ -8,6 +10,8 @@
 
 <script>
 import Navbar from "./components/Navbar.vue";
+import Flash from "./components/Flash.vue";
+import Toast from "./components/Toast.vue";
 import Footer from "./components/Footer.vue";
 
 import { sendGetRequest } from "./utils";
@@ -16,6 +20,8 @@ export default {
   name: "App",
   components: {
     Navbar,
+    Flash,
+    Toast,
     Footer
   },
   mounted() {

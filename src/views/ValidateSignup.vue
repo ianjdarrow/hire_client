@@ -12,7 +12,7 @@ export default {
       this.$router.push("/login");
       console.log("Invalid registration token");
     }
-    this.$router.push("/dashboard");
+    this.$router.push("/dashboard/setup");
   }
 };
 </script>

@@ -19,6 +19,10 @@ export default new Vuex.Store({
       active: false,
       type: "",
       message: ""
+    },
+    toast: {
+      active: false,
+      message: ""
     }
   },
   mutations: {
@@ -30,6 +34,32 @@ export default new Vuex.Store({
       state.user = {};
       window.localStorage.removeItem("token");
       router.push("/login");
+    },
+    setFlash(state, flash) {
+      state.flash = {
+        active: true,
+        ...flash
+      };
+    },
+    clearFlash(state) {
+      state.flash = {
+        active: false,
+        type: "",
+        message: ""
+      };
+    },
+    setToast(state, message) {
+      state.toast = {
+        active: true,
+        message
+      };
+      setTimeout(() => this.commit("clearToast"), 3500);
+    },
+    clearToast(state) {
+      state.toast = {
+        active: false,
+        message: ""
+      };
     },
     disableLoading: state => (state.loading = false)
   },

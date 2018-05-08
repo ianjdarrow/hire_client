@@ -4,10 +4,10 @@
       <form @submit.prevent='handleSubmit'>
         <div class='input-container'>
           <i class="fa fa-envelope left" aria-hidden="true"></i>
-          <input class='icon-left icon-right nolabel' type='email' placeholder='Email' v-model='email.value' @keydown='email.touched=true' autocorrect="off" autocapitalize="off" spellcheck="false" />
+          <input class='icon-left icon-right nolabel' type='email' placeholder='Email' v-model='email.value' @keydown='email.touched=true' />
         </div>
         <div class='input-container'>
-          <input class='icon-left icon-right nolabel' type='password' placeholder='Password' v-model='password.value' @keydown='password.touched=true' autocorrect="off" autocapitalize="off" spellcheck="false" />
+          <input class='icon-left icon-right nolabel' type='password' placeholder='Password' v-model='password.value' @keydown='password.touched=true' />
           <i class="fa fa-lock left" aria-hidden="true"></i>
         </div>
         <button class='primary'>Log in</button>

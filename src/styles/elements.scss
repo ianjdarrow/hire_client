@@ -108,19 +108,15 @@ button {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  // margin-right: 1rem;
   margin-bottom: 1rem;
   transition: all 0.2s ease-in-out;
-  // &:last-child {
-  // margin-right: 0;
-  // }
   &:hover {
     cursor: pointer;
     border: 2px solid rgba(255, 255, 255, 1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   &:focus {
-    outline: 3px auto rgba($primary, 0.1);
+    outline: 5px auto rgba($primary, 0.1);
   }
   &.small {
     padding: 0.5rem 1rem 0.5rem 1rem;
@@ -157,13 +153,6 @@ button {
       // background-image: none;
       // background: darken($grey, 20%);
       filter: grayscale(100%);
-    }
-  }
-  &.success {
-    border: 2px solid transparent;
-    background: $success;
-    &:hover {
-      background: lighten($success, 10%);
     }
   }
   &.standalone {

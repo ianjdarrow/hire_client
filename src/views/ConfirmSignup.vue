@@ -2,7 +2,7 @@
   <div class='container has-text-centered'>
     <div class='circle-icon'>
       <h1 class='title'>
-        <i class="fa fa-envelope" aria-hidden="true"></i>
+        <i class="fa fa-envelope nudge" aria-hidden="true"></i>
       </h1>
     </div>
     <h3 class='heading'>Check
@@ -45,10 +45,14 @@ export default {
   align-items: center;
   justify-content: center;
   border-radius: 80px;
-  margin-bottom: 60px;
+  margin-bottom: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+.nudge {
+  position: relative;
+  transform: translateY(0.3rem);
+}
 .helper {
-  margin-top: 80px;
+  margin-top: 4rem;
 }
 </style>

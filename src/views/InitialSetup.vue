@@ -213,7 +213,18 @@ export default {
         logo: this.form.logo
       };
       const company = await sendPostRequest("create-company", payload);
-      console.log(company);
+      if (company.status === 200) {
+        this.$store.commit("setFlash", {
+          type: "success",
+          message: "Initial setup complete!"
+        });
+        this.$router.push("/dashboard");
+      } else {
+        this.$store.commit("setFlash", {
+          type: "danger",
+          message: "Error setting up company."
+        });
+      }
     }
   }
 };

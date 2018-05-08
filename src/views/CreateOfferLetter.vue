@@ -1,5 +1,5 @@
 <template>
-  <div class='container'>
+  <div class='container' :key='$route.fullPath'>
     <div class='card'>
       <div class='card-title'>
         <p>
@@ -23,7 +23,7 @@
 
       <!-- FORM FIELDS -->
 
-      <div class='card-content'>
+      <div class='card-content' ref='content'>
         <form @submit.prevent='handleFormSubmit'>
           <!-- Employee stuff -->
           <span class='subheading'>Employee info</span><br><br>
@@ -164,12 +164,13 @@ export default {
   data() {
     return {
       form: {
+        previewURL: "",
         firstName: "",
         lastName: "",
         email: "",
         jobTitle: "",
         payUnit: "year",
-        payRate: "",
+        payRate: null,
         equityType: "option",
         equityGrant: null,
         equityAmount: null,
@@ -186,14 +187,50 @@ export default {
   },
   methods: {
     handleFormSubmit: async function() {
-      console.log("submitted yo");
-      const create = await sendPostRequest("create-offer-letter", this.form);
-      console.log(create);
+      console.log("submit");
+      this.submitFormData();
+    },
+    submitFormData: async function() {
+      this.$store.commit("setToast", "Submitted");
+      const update = await sendPostRequest("update-offer-letter", {
+        form: this.form
+      });
+      console.log(update);
     }
   },
-  mounted() {
+  async mounted() {
     this.form.respondBy = getPrefillDate(14);
     this.form.startDate = getPrefillDate(21);
+    const previewURL = this.$route.query.id;
+    if (previewURL) {
+      this.form.previewURL = previewURL;
+      const document = await sendGetRequest(`offer-letter/${previewURL}`);
+      if (document.status == 200) {
+        this.form = document.data;
+        this.$refs.content.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+        return;
+      } else {
+        this.$store.commit("setFlash", {
+          type: "danger",
+          message:
+            "We couldn't find that offer letter. Let's start you with a fresh one."
+        });
+      }
+    }
+    // we only get here if there was no documentId, or if there was one but it
+    // was bad
+    const initialize = await sendGetRequest("initialize-offer-letter");
+    this.$router.replace({
+      path: "/dashboard/create/offer-letter",
+      query: {
+        id: initialize.data.previewURL
+      }
+    });
+    this.form.previewURL = initialize.data.previewURL;
+    this.submitFormData();
   }
 };
 </script>

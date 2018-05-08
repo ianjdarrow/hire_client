@@ -65,6 +65,9 @@ p {
 .subheading {
   @include size(h4);
 }
+.small-heading {
+  @include size(h5);
+}
 h1,
 h2,
 h3,
