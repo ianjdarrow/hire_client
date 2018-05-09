@@ -7,6 +7,7 @@ import Signup from "./views/Signup.vue";
 import ConfirmSignup from "./views/ConfirmSignup.vue";
 import ValidateSignup from "./views/ValidateSignup.vue";
 import InitialSetup from "./views/InitialSetup.vue";
+import CompanyInfo from "./views/CompanyInfo.vue";
 import CreateOfferLetter from "./views/CreateOfferLetter.vue";
 import Dashboard from "./views/Dashboard.vue";
 
@@ -44,6 +45,11 @@ const router = new Router({
       path: "/dashboard/setup",
       name: "initial-setup",
       component: InitialSetup
+    },
+    {
+      path: "/dashboard/company",
+      name: "company-info",
+      component: CompanyInfo
     },
     {
       path: "/dashboard/create/offer-letter",

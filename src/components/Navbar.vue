@@ -14,7 +14,7 @@
         <button class='small text'>Log in</button>
       </router-link>
       <router-link to='/signup'>
-        <button class='small primary outlined'>Sign up&nbsp;
+        <button class='small success outlined'>Sign up&nbsp;
           <i class="fa fa-caret-right" aria-hidden="true"></i>
         </button>
       </router-link>

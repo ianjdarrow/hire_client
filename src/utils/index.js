@@ -58,6 +58,35 @@ export const sendPostRequest = (resource, payload) => {
   });
 };
 
+export const sendDeleteRequest = resource => {
+  return new Promise(async (res, rej) => {
+    try {
+      const response = await axios.delete(
+        process.env.VUE_APP_API_URL + resource,
+        {
+          headers: {
+            Authentication: `Bearer ${store.getters.token}`
+          }
+        }
+      );
+      if (![200, 304].includes(response.status))
+        throw new Error("Bad response!");
+      if (response.data.user) {
+        store.commit("setUser", response.data.user);
+      }
+      res(response);
+    } catch (err) {
+      router.push({
+        path: "/login",
+        query: {
+          redirect: window.location.href
+        }
+      });
+      res(err);
+    }
+  });
+};
+
 export const states = new Array(
   { name: "Alabama", abbrev: "AL" },
   { name: "Alaska", abbrev: "AK" },

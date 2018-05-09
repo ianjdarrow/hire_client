@@ -107,6 +107,15 @@
                 <input placeholder='2018 Equity Incentive Plan' v-model='form.stockPlanName'>
               </div>
             </transition>
+            <hr>
+            <div class='logo-preview' v-if='this.form.logo'>
+              <img :src='this.form.logo' />
+            </div>
+            <div class='upload'>
+              <button type='button' class='outlined fullwidth margin-bottom'>Upload a logo (optional)</button>
+              <input type='file' @change='handleFileUpload'>
+            </div>
+            <hr>
             <button :disabled='companySubmitDisabled' type='submit' class='hero fullwidth'>
               Finish setup&nbsp;
               <i class="fa fa-caret-right" aria-hidden="true"></i>
@@ -202,6 +211,21 @@ export default {
         }
       });
     },
+    handleFileUpload: function(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        if (reader.result.indexOf("data:image/") !== -1) {
+          this.form.logo = reader.result;
+        } else {
+          this.$store.commit("setFlash", {
+            type: "danger",
+            message: "Logos can only be .gif, .svg, .png or .jpg!"
+          });
+        }
+      });
+      reader.readAsDataURL(file);
+    },
     handleCompanySubmit: async function() {
       console.log("let's submit a form");
       const payload = {
@@ -239,13 +263,8 @@ $setup-container-width: 640px;
   border-bottom: none;
 }
 .setup-container {
-  // position: relative;
-  margin-bottom: 800px;
+  margin-bottom: 1280px;
 }
-// .breadcrumb {
-//   position: relative;
-//   // transform: translate(-1rem, -0.75rem);
-// }
 .equity-questions {
   display: flex;
 }
@@ -265,9 +284,18 @@ $setup-container-width: 640px;
   left: 0;
   right: 0;
   margin: auto;
-  // margin-top: 30px;
   width: 100%;
   max-width: $setup-container-width;
+}
+.logo-preview {
+  margin-bottom: 1rem;
+  img {
+    display: block;
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 300px;
+    height: auto;
+  }
 }
 .setup-enter-active,
 .setup-leave-active {

@@ -270,16 +270,27 @@ select::-ms-expand {
 .select select:focus {
   background: rgba(0, 0, 0, 0.2);
 }
-// select:focus {
-//   outline-offset: -1px;
-//   outline: 1px solid $primary;
-//   border: none;
-// border: 1px solid primary;
-// }
 .select::after {
   -webkit-transition: 0.25s all ease;
   -o-transition: 0.25s all ease;
   transition: 0.25s all ease;
+}
+
+// upload component
+.upload {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+}
+.upload input[type="file"] {
+  cursor: pointer;
+  font-size: 120px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
 
 ul {

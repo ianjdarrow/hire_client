@@ -33,6 +33,10 @@ html {
   border-radius: 2px;
   box-sizing: border-box;
   overflow: hidden;
+  &.outlined {
+    background: transparent;
+    border: 1px solid $grey;
+  }
   .card-title {
     padding: 1rem;
     padding-left: 2.5rem;
@@ -40,6 +44,11 @@ html {
     box-sizing: border-box;
     font-weight: 500;
     background: $raise-color;
+    &.outlined {
+      // background: transparent;
+      border: none;
+      border-bottom: 1px solid $grey;
+    }
     @media (max-width: 600px) {
       padding: 1rem;
     }
